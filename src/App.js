@@ -5,8 +5,8 @@ function App() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
-    // fetch("https://inventory-home.azurewebsites.net/shopping-list")
-    fetch("http://localhost:5003/shopping-list")
+    fetch("https://inventory-home.azurewebsites.net/shopping-list")
+    // fetch("http://localhost:5003/shopping-list")
       .then(response => response.json())
       .then(json => setData(json))
       .finally(() => {
