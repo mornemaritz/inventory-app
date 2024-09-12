@@ -5,7 +5,8 @@ function App() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
-    fetch("https://inventory-home.azurewebsites.net/weatherforecast")
+    // fetch("https://inventory-home.azurewebsites.net/shopping-list")
+    fetch("http://localhost:5003/shopping-list")
       .then(response => response.json())
       .then(json => setData(json))
       .finally(() => {
@@ -19,23 +20,19 @@ function App() {
         <div>Loading...</div>
       ) : (
         <>
-          <h1>Weather</h1>
+          <h1>Shopping List</h1>
           <table border={1}>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>TemperatureC</th>
-                <th>Summary</th>
-                <th>TemperatureF</th>
+                <th></th>
+                <th>Item Name</th>
               </tr>
             </thead>
             <tbody>
-            {data.map(w => (
-              <tr key={w.temperatureC}>
-                <td>{w.date}</td>
-                <td>{w.temperatureC}</td>
-                <td>{w.summary}</td>
-                <td>{w.temperatureF}</td>
+            {data.map(d => (
+              <tr key={d.id}>
+                <td><input type="checkbox" defaultChecked={d.marked}></input></td>
+                <td>{d.name}</td>
               </tr>
             ))}
             </tbody>
